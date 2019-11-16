@@ -2,13 +2,18 @@
 <html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.utraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>Teste back-end Via Varejo</title>
-		<meta charset="utf-8">
+		<meta charset="utf-8"/>
+		
+		<!-- Materialize -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
 		<h1>Via Varejo - Lista de Produtos</h1>
-		<p><a href="/cadastrarProduto">Cadastrar Produto</a></p>
+		<p><a href="/cadastrarProduto" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Produto</a></p>
 		
-		<table>
+		<table class="container">
 			<thead>
 				<tr>
 					<th>Código</th>
@@ -17,9 +22,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:if="${produtos.empty}">
-					<td colspan="3">Não há produtos disponíveis neste momento</td>
-				</tr>
 				<tr th:each="produto:${produtos}">
 					<td><span th:text="${produto.codigo}">Código</span></td>
 					<td><span th:text="${produto.nome}">Nome</span></td>
@@ -27,5 +29,7 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<script type="text/javascript" src="js/materialize.min.js"></script>
 	</body>
 </html>

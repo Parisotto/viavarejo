@@ -2,6 +2,7 @@ package net.parisotto.via.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +31,14 @@ public class ProdutoController {
 		ModelAndView mv = new ModelAndView("index");
 		Iterable<Produto> produtos = pr.findAll();
 		mv.addObject("produtos", produtos);
+		return mv;
+	}
+	
+	@RequestMapping("/{idProd}")
+	public ModelAndView comprarProduto(@PathVariable("idProd") long idprod) {
+		Produto produto = pr.buscaPorIdProd(idprod);
+		ModelAndView mv = new ModelAndView("comprarProduto");
+		mv.addObject("produto", produto);
 		return mv;
 	}
 }
