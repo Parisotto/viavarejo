@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.utraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>Teste back-end Via Varejo</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Via Varejo - Lista de Produtos</h1>
+		<p><a href="/cadastrarProduto">Cadastrar Produto</a></p>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Valor</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${produtos.empty}">
+					<td colspan="3">Não há produtos disponíveis neste momento</td>
+				</tr>
+				<tr th:each="produto:${produtos}">
+					<td><span th:text="${produto.codigo}">Código</span></td>
+					<td><span th:text="${produto.nome}">Nome</span></td>
+					<td><span th:text="${produto.valor}">Valor</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
