@@ -13,17 +13,17 @@ public class Produto implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long idProd;
+	private long idprod;
 	
 	private String codigo;
 	private String nome;
 	private String valor;
 	
-	public long getIdProd() {
-		return idProd;
+	public long getIdprod() {
+		return idprod;
 	}
-	public void setIdProd(long idProd) {
-		this.idProd = idProd;
+	public void setIdprod(long idprod) {
+		this.idprod = idprod;
 	}
 	
 	public String getCodigo() {

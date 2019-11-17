@@ -14,18 +14,18 @@
 		<p><a href="/cadastrarProduto" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Produto</a></p>
 		
 		<table class="container">
-			<thead>
+			<thead class="row">
 				<tr>
-					<th>Código</th>
-					<th>Nome</th>
-					<th>Valor</th>
+					<th class="col s1">Código</th>
+					<th class="col s8">Nome</th>
+					<th class='col s3'>Valor</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="row">
 				<tr th:each="produto:${produtos}">
-					<td><span th:text="${produto.codigo}">Código</span></td>
-					<td><span th:text="${produto.nome}">Nome</span></td>
-					<td><span th:text="${produto.valor}">Valor</span></td>
+					<td class="col s1"><span th:text="${produto.codigo}">Código</span></td>
+					<td class="col s8"><a th:href="${(#mvc.url('PC#comprarProduto').arg(0, produto.idprod)).build()}"><span th:text="${produto.nome}">Nome</span></a></td>
+					<td class='col s3'><span th:text="${produto.valor}">Valor</span></td>
 				</tr>
 			</tbody>
 		</table>

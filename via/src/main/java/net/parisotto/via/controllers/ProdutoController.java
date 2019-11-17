@@ -34,9 +34,9 @@ public class ProdutoController {
 		return mv;
 	}
 	
-	@RequestMapping("/{idProd}")
-	public ModelAndView comprarProduto(@PathVariable("idProd") long idprod) {
-		Produto produto = pr.buscaPorIdProd(idprod);
+	@RequestMapping("/{idprod}")
+	public ModelAndView comprarProduto(@PathVariable("idprod") long idprod) {
+		Produto produto = pr.findByIdprod(idprod);
 		ModelAndView mv = new ModelAndView("comprarProduto");
 		mv.addObject("produto", produto);
 		return mv;
