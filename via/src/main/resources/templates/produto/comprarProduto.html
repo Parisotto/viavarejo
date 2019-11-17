@@ -10,18 +10,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
-		<header>
-		  <nav>
-		    <div class="nav-wrapper">
-		      <a href="#" class="brand-logo">Via Varejo</a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="/cadastrarProduto">Cadastrar Produto</a></li>
-		        <li><a href="/produtos">Listar Produtos</a></li>
-		      </ul>
-		    </div>
-		  </nav>
-  		</header>
-<!-- 		<p><a href="/cadastrarProduto" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Produto</a></p> -->
+		<h1>Via Varejo - Comprar Produto</h1>
+		<p><a href="/produtos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Listar Produtos</a></p>
 		
 		<table class="container">
 			<thead class="row">
@@ -32,15 +22,27 @@
 				</tr>
 			</thead>
 			<tbody class="row">
-				<tr th:each="produto:${produtos}">
+				<tr th:each="produto:${produto}">
 					<td class="col s1"><span th:text="${produto.codigo}">Código</span></td>
-					<!-- <td class="col s8"><a th:href="${(#mvc.url('PC#comprarProduto').arg(0, produto.idprod)).build()}"><span th:text="${produto.nome}">Nome</span></a></td> -->
-					<td class="col s8"><a th:href="${produto.idprod}"><span th:text="${produto.nome}">Nome</span></a></td>
+					<td class="col s8"><span th:text="${produto.nome}">Nome</span></td>
 					<td class='col s3'><span th:text="${produto.valor}">Valor</span></td>
 				</tr>
 			</tbody>
 		</table>
-		
+		<hr>
+		<form th:action="@{/parcelamento}" th:object="${parcela}" class="container row" method="post">
+			<div class="input-field col s6">
+				<label for="entrada">Entrada</label>
+				<input type="number" value="" name="entrada" id="entrada" min="0" step="0.01" th:field="*{entrada}">
+			</div>
+
+			<div class="input-field col s6">
+				<label for="parcelas">Parcelas</label>
+				<input type="number" value="" name="parcelas" id="parcelas" min="0" th:field="*{numeroParcelas}">
+			</div>
+			
+			<button class="waves-effect waves-light btn" type="submit">Calcular</button>
+		</form>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 	</body>
 </html>
