@@ -25,7 +25,7 @@
 		  </nav>
   		</header>
 		<main>
-			<table class="container">
+			<table class="container striped">
 				<thead class="row">
 					<tr>
 						<th class="col s1">Código</th>
@@ -34,27 +34,14 @@
 					</tr>
 				</thead>
 				<tbody class="row">
-					<tr th:each="produto:${produto}">
+					<tr th:each="produto:${produtos}">
 						<td class="col s1"><span th:text="${produto.codigo}">Código</span></td>
-						<td class="col s8"><span th:text="${produto.nome}">Nome</span></td>
+						<!-- <td class="col s8"><a th:href="${(#mvc.url('PC#comprarProduto').arg(0, produto.idprod)).build()}"><span th:text="${produto.nome}">Nome</span></a></td> -->
+						<td class="col s8"><a th:href="${produto.idprod}"><span th:text="${produto.nome}">Nome</span></a></td>
 						<td class='col s3'><span th:text="${produto.valor}">Valor</span></td>
 					</tr>
 				</tbody>
 			</table>
-			<hr>
-			<form th:action="@{/parcelamento}" th:object="${parcela}" class="container row" method="post">
-				<div class="input-field col s6">
-					<label for="entrada">Entrada</label>
-					<input type="number" value="" name="entrada" id="entrada" min="0" step="0.01" th:field="*{entrada}">
-				</div>
-	
-				<div class="input-field col s6">
-					<label for="parcelas">Parcelas</label>
-					<input type="number" value="" name="parcelas" id="parcelas" min="0" th:field="*{numeroParcelas}">
-				</div>
-				
-				<button class="waves-effect waves-light btn" type="submit">Calcular</button>
-			</form>
 		</main>
 		<section>
 			<button type="button" class="waves-effect waves-light btn"><a href="/cadastrarProduto">Cadastrar Produto</a></button>

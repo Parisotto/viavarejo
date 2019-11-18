@@ -3,32 +3,49 @@
 	<head>
 		<title>Teste back-end Via Varejo</title>
 		<meta charset="utf-8"/>
+		<link rel="icon" href="img/iconViavarejo.png">
 		
 		<!-- Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<link rel="stylesheet" href="css/estilo.css">
 	</head>
 	<body>
-		<h1>Via Varejo - Parcelas</h1>
-		<p><a href="/produtos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Listar Produtos</a></p>
-		<hr>
-		<table class="container">
-			<thead class="row">
-				<tr>
-					<th class="col s1">Parcelas</th>
-					<th class="col s8">Valor da Parcela</th>
-					<th class='col s3'>Taxa de Juros</th>
-				</tr>
-			</thead>
-			<tbody class="row">
- 				<tr>
- 					<td class="col s1" th:text="${meses}">1</td>
- 					<td class="col s8" th:text="${parcelado}">0</td>
- 					<td class="col s3" th:text="${taxa}"></td>
- 				</tr>
-  			</tbody>
-		</table>
+		<header>
+		  <nav>
+		    <div class="nav-wrapper">
+		      <a href="/" class="brand-logo"><img class="responsive-img" width="160px" id="logo" src="img/viavarejo.png"/></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/cadastrarProduto">Cadastrar Produto</a></li>
+		        <li><a href="/produtos">Listar Produtos</a></li>
+		      </ul>
+		    </div>
+		  </nav>
+  		</header>
+		<main>
+			<table class="container">
+				<thead class="row">
+					<tr>
+						<th class="col s1">Parcelas</th>
+						<th class="col s8">Valor da Parcela</th>
+						<th class='col s3'>Taxa de Juros</th>
+					</tr>
+				</thead>
+				<tbody class="row">
+	 				<tr>
+	 					<td class="col s1" th:text="${meses}">1</td>
+	 					<td class="col s8" th:text="${parcelado}">0</td>
+	 					<td class="col s3" th:text="${taxa}"></td>
+	 				</tr>
+	  			 </tbody>
+			 </table>
+		</main>
+		<section>
+			<button type="button" class="waves-effect waves-light btn"><a href="/cadastrarProduto">Cadastrar Produto</a></button>
+			<button type="button" class="waves-effect waves-light btn"><a href="/produtos">Listar Produtos</a></button>
+		</section>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
 	</body>
 </html>

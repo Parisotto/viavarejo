@@ -33,7 +33,7 @@ public class ProdutoController {
 	
 	@RequestMapping("/produtos")
 	public ModelAndView listaProdutos() {
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("produto/listarprodutos");
 		Iterable<Produto> produtos = pr.findAll();
 		mv.addObject("produtos", produtos);
 		return mv;
@@ -54,12 +54,22 @@ public class ProdutoController {
 		double principal = valorProduto - parcelas.getEntrada();
 		int meses = parcelas.getNumeroParcelas();
 		double taxa = 0.0115; // 1,15% a.m.
+		double parcelado;
 		
-		double parcelado = (principal * Math.pow(1 + taxa, meses)) / meses;
+		if(meses == 0) meses = 1;
+		
+		if(meses > 6) {
+			parcelado = (principal * Math.pow(1 + taxa, meses)) / meses;
+		} else {
+			parcelado = principal / meses;
+			taxa = 0;
+		}
+		
 		String strParcela = String.format("%,.2f", parcelado);
 		model.addAttribute("parcelado", strParcela);
 		model.addAttribute("meses", meses);
 		model.addAttribute("taxa", taxa * 100);
+		
 		return "produto/listaparcelas";
 	}
 }

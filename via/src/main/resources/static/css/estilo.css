@@ -1,0 +1,43 @@
+
+main {
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
+	border-radius:10px;
+	box-shadow: 0 0 5px #ccc; 
+	max-width:80%;
+	margin:20px auto;
+	padding:20px;
+}
+
+nav {
+	background-color:#28A745;
+}
+
+button a{
+	color:white;
+}
+
+section{
+	text-align:center;
+}
+
+section button{
+	margin:30px;
+}
+
+td{
+	height:50px;
+	border-bottom:1px solid #ccc;
+	vertical-align: middle !important;
+}
+
+article{
+	display:block;
+	width:70%;
+	margin:20px auto;
+}
+
+article p{
+	color:gray;
+	font-size:25px;
+}
